@@ -303,8 +303,5 @@ describe("getAvailabilities", () => {
       expect(availabilities["2020-01-08"]).toEqual(["8:30", "9:00", "9:30", "11:00", "12:30"]);
     });
   });
-
-
-
 });
 ;
