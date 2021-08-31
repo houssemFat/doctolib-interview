@@ -206,10 +206,10 @@ describe("getAvailabilities", () => {
   });
 
   describe("Date validation", () => {
-    it("should fail", async () => {
+    it("should fail when date is not provided", async () => {
       await expect(getAvailabilities()).rejects.toThrow()
     })
-    it("should fail", async () => {
+    it("should fail when the date is invalid", async () => {
       await expect(getAvailabilities(new Date("2020-01-03 55:10"))).rejects.toThrow()
     })
   })
@@ -228,7 +228,7 @@ describe("getAvailabilities", () => {
       expect(availabilities["2020-01-03"]).toEqual(["12:00", "12:30", "13:00"]);
     });
 
-    it("Recurring opening event in exceptional day should be taken in account", async () => {
+    it("Recurring opening event in exceptional day should be taken into account", async () => {
       await knexClient("events").insert([
         {
           kind: "opening",
