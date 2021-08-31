@@ -1,0 +1,19 @@
+{
+  "name": "candidate-test",
+  "description": "Doctolib developer test.",
+  "scripts": {
+    "test": "jest --runInBand --detectOpenHandles"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.4",
+    "jest": "^27.0.3"
+  },
+  "dependencies": {
+    "date-fns": "^2.22.1",
+    "knex": "^0.95.6",
+    "sqlite3": "^5.0.1"
+  },
+  "engines": {
+    "node": "15.x"
+  }
+}
