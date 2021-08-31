@@ -205,6 +205,14 @@ describe("getAvailabilities", () => {
     });
   });
 
+  describe("Date validation", () => {
+    it("should fail", async () => {
+      await expect(getAvailabilities()).rejects.toThrow()
+    })
+    it("should fail", async () => {
+      await expect(getAvailabilities(new Date("2020-01-03 55:10"))).rejects.toThrow()
+    })
+  })
   
   describe("Not same year and recurring event ", () => {
     it("Recurring opening event last year is taken into account next year", async () => {
@@ -282,11 +290,17 @@ describe("getAvailabilities", () => {
         {
           kind: "opening",
           starts_at: new Date("2020-01-08 11:30").toISOString(),
-          ends_at: new Date("2020-01-08 12:00").toISOString()
+          ends_at: new Date("2020-01-08 13:00").toISOString()
+        },
+        
+        {
+          kind: "appointment",
+          starts_at: new Date("2020-01-08 11:30").toISOString(),
+          ends_at: new Date("2020-01-08 12:30").toISOString(),
         },
       ]);
       availabilities = await getAvailabilities(new Date("2020-01-08 00:00"));
-      expect(availabilities["2020-01-08"]).toEqual(["8:30", "9:00", "9:30", "11:00", "11:30"]);
+      expect(availabilities["2020-01-08"]).toEqual(["8:30", "9:00", "9:30", "11:00", "12:30"]);
     });
   });
 
